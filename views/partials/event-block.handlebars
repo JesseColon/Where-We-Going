@@ -1,0 +1,11 @@
+<!-- event-block.handlebars -->
+
+<div class="event-block">
+  <h2>{{ title }}</h2>
+  <p><strong>Location:</strong> {{ location }}</p>
+  <p><strong>Date:</strong> {{ date }}</p>
+  <p><strong>Attendees:</strong> {{ attendees }}</p>
+  {{#if description}}
+    <p><strong>Description:</strong> {{ description }}</p>
+  {{/if}}
+</div>
