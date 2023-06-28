@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const usercontroller = require('./usercontroller');
-const eventcontroller = require('./eventcontroller');
+const usercontroller = require('./usersController');
+//const eventcontroller = require('./eventsController');
 
 router.use('/users', usercontroller);
-router.use('/events', eventcontroller);
+//router.use('/events', eventcontroller);
 
 module.exports = router;
