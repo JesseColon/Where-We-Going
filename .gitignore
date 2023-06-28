@@ -1,3 +1,4 @@
 node_modules
 .env
 .DS_StoreGIT 
+package-lock.json
