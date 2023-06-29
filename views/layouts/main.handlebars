@@ -7,18 +7,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Event Finder</title>
+  <link rel="stylesheet" href="/assets/bulma.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/jass.css">
 </head>
 
 <body>
   <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Find a Local Event
-    </h1>
+   <section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Local Event Finder
+    </p>
+    <p class="subtitle">
+      Search for exciting events happening in your area.
+    </p>
+  </div>
+</section>
     {{#if logged_in}}
     <nav>
       <a href="../partials/event-block.handlebars">Events</a>
       <button class="btn" id="logout">Logout</button>
+    </nav>
+    {{else}}
+    <nav>
+      <a href="/login">Login</a>
     </nav>
     {{/if}}
   </header>
