@@ -7,6 +7,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Event Finder</title>
+  <link rel="stylesheet" href="/assets/bulma.css">
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/jass.css">
 </head>
 
@@ -26,6 +28,10 @@
     <nav>
       <a href="../partials/event-block.handlebars">Events</a>
       <button class="btn" id="logout">Logout</button>
+    </nav>
+    {{else}}
+    <nav>
+      <a href="/login">Login</a>
     </nav>
     {{/if}}
   </header>
