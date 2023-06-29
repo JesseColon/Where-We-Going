@@ -11,6 +11,10 @@ router.get('/login', (req, res) => {
     res.render('login', { title: 'Login' });
 });
 
+router.get('/signup', (req, res) => {
+    res.render('signup', { title: 'Signup' });
+});
+
 // Route for user's dashboard
 router.get('/dashboard', (req, res) => {
     if (!req.session.user) {
