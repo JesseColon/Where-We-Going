@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const bycript = require('bcrypt');
 const { User } = require('../../models');
 
 // CREATE new user
@@ -23,7 +24,7 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
         }
-        const validPassword = await userData.checkPassword(req.body.password);
+        const validPassword = await bycript.compare(req.body.password, userData.password);
         if (!validPassword) {
             res.status(400).json({ message: 'Incorrect username or password, please try again' });
             return;
