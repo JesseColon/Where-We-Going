@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const bycript = require('bcrypt');
 const { User } = require('../../models');
+const db = require('../../models');
 
 // CREATE new user
 router.post('/', async (req, res) => {
@@ -48,6 +49,20 @@ router.post('/logout', (req, res) => {
     } else {
         res.status(404).end();
     }
+});
+
+// Route to get all users
+router.get('/users', (req, res) => {
+    db.User.findAll() 
+        .then(users => res.json(users))
+        .catch(err => res.status(500).json(err));
+});
+
+// Route to create a new user
+router.post('/users', (req, res) => {
+    db.User.create(req.body)
+        .then(newUser => res.json(newUser))
+        .catch(err => res.status(500).json(err));
 });
 
 module.exports = router;

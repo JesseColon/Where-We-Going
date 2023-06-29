@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const db = require('../models'); 
+const router = require('express').Router();
+const { Event } = require('../../models');
+const db = require('../../models');
 
 // Route to get all events
 router.get('/events', (req, res) => {
@@ -22,19 +22,3 @@ router.post('/events', (req, res) => {
         .then(newEvent => res.json(newEvent))
         .catch(err => res.status(500).json(err));
 });
-
-// Route to get all users
-router.get('/users', (req, res) => {
-    db.User.findAll() 
-        .then(users => res.json(users))
-        .catch(err => res.status(500).json(err));
-});
-
-// Route to create a new user
-router.post('/users', (req, res) => {
-    db.User.create(req.body)
-        .then(newUser => res.json(newUser))
-        .catch(err => res.status(500).json(err));
-});
-
-module.exports = router;
