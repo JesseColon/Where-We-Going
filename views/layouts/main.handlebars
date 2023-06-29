@@ -12,9 +12,16 @@
 
 <body>
   <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      Find a Local Event
-    </h1>
+   <section class="hero is-primary">
+  <div class="hero-body">
+    <p class="title">
+      Local Event Finder
+    </p>
+    <p class="subtitle">
+      Search for exciting events happening in your area.
+    </p>
+  </div>
+</section>
     {{#if logged_in}}
     <nav>
       <a href="../partials/event-block.handlebars">Events</a>
