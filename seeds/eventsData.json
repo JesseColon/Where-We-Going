@@ -1,0 +1,10 @@
+[
+    {
+        "id" : 1,
+        "title" : "Test Event",
+        "location" : "Test Location",
+        "attendees" : 13,
+        "date" : "2017-01-01",
+        "description" : "Test Description"
+    }
+]
