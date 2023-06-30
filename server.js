@@ -5,6 +5,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const helpers = require('./utils/helpers');
 const sequelize = require('./Config/connection');
+const routes  = require('./controllers');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -13,8 +14,8 @@ const PORT = process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
+//const apiRoutes = require('./routes/apiRoutes');
+//const htmlRoutes = require('./controllers/api/htmlRoutes');
 
 const sess = {
     secret: 'Super secret secret',
@@ -35,8 +36,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', apiRoutes);
-app.use('/', htmlRoutes);
+//app.use('/api', apiRoutes);
+//app.use('/', htmlRoutes);
+
+app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log('Now listening'));
