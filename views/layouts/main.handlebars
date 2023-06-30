@@ -7,40 +7,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Local Event Finder</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="/public/css/style.css">
   <link rel="stylesheet" href="/css/jass.css">
 </head>
 
-<body>
-  <header class="display-flex justify-space-between align-center p-2">
-   <section class="hero is-primary">
-  <div class="hero-body">
-    <p class="title">
-      Local Event Finder
-    </p>
-    <p class="subtitle">
-      Search for exciting events happening in your area.
-    </p>
-  </div>
-</section>
-    {{#if logged_in}}
-    <nav>
-      <a href="../partials/event-block.handlebars">Events</a>
-      <button class="btn" id="logout">Logout</button>
-    </nav>
-    {{else}}
-    <nav>
-      <a href="/login">Login</a>
-    </nav>
-    {{/if}}
-  </header>
-  <main class="container container-fluid mt-5">
-    <section class="section">
+<body style="background-color: black;">
+  <header class="">
+<section class="hero is-primary is-large">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    <nav class="navbar">
       <div class="container">
-        <h2 class="title">Find a Local Event</h2>
-        <p class="subtitle">Search for exciting events happening in your area.</p>
-        <!-- Add your event search form or content here -->
+        <div class="navbar-brand">
+          <a class="navbar-item">
+            <img src="" alt="Logo">
+          </a>
+          <span class="navbar-burger" data-target="navbarMenuHeroA">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </div>
+        <div id="navbarMenuHeroA" class="navbar-menu">
+          <div class="navbar-end">
+            {{#if logged_in}}
+                <nav>
+                <a href="../partials/event-block.handlebars">Events</a>
+                <button class="btn" id="logout">Logout</button>
+              </nav>
+            {{else}}
+            <span class="navbar-item">
+              <a class="button is-primary is-inverted">
+                <span class="icon">
+                  <i class="fab fa-github"></i>
+                </span>
+                <span>Login</span>
+              </a>
+            </span>
+            {{/if}}
+          </div>
+        </div>
       </div>
-    </section>
+    </nav>
+  </div>
+  </header>
+  <main class="container container-fluid mt-5" style="background-color: black;">
     {{{ body }}}
   </main>
   <footer>
