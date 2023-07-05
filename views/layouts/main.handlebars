@@ -1,68 +1,52 @@
-<!-- main.handlebars -->
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Local Event Finder</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-  <link rel="stylesheet" href="/public/css/style.css">
-  <link rel="stylesheet" href="/css/jass.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Event Finder</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="/css/jass.css">
 </head>
 
-<body style="background-color: black;">
-  <header class="">
-<section class="hero is-primary is-large">
-  <!-- Hero head: will stick at the top -->
-  <div class="hero-head">
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item">
-            <img src="" alt="Logo">
-          </a>
-          <span class="navbar-burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-end">
-            {{#if logged_in}}
-                <nav>
-                <a href="../partials/event-block.handlebars">Events</a>
-                <button class="btn" id="logout">Logout</button>
-              </nav>
-            {{else}}
-            <span class="navbar-item">
-              <a class="button is-primary is-inverted">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
-                <span>Login</span>
-              </a>
-            </span>
-            {{/if}}
-          </div>
-        </div>
-      </div>
-    </nav>
-  </div>
-  </header>
-  <main class="container container-fluid mt-5" style="background-color: black;">
-    {{{ body }}}
-  </main>
-  <footer>
-    <!-- Footer content goes here -->
-  </footer>
-
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+<body>
+    <header>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" id="header-title" href="/">
+                    <span class="title is-4">Local Event Finder</span>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-end">
+                    {{#if logged_in}}
+                        <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
+                        <a class="navbar-item" id="navbar-links" href="/logout">Logout</a>
+                    {{else}}
+                        <a class="navbar-item" id="navbar-links" href="/login">Login</a>
+                        <a class="navbar-item" id="navbar-links" href="/signup">Sign Up</a>
+                    {{/if}}
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        {{{ body }}}
+    </main>
+    <footer>
+        <!-- Footer content goes here -->
+    </footer>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/login.js"></script>
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>
-

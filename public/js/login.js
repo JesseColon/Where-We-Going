@@ -25,14 +25,14 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
+  const username = document.querySelector('#username-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && email && password) {
+  if (username && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ username, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
@@ -44,7 +44,10 @@ const signupFormHandler = async (event) => {
   }
 };
 
-document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+const loginForm = document.querySelector('.login-form');
+if (loginForm) {
+  loginForm.addEventListener('submit', loginFormHandler);
+}
 
 // Check if the signup form exists before adding the event listener
 const signupForm = document.querySelector('.signup-form');
