@@ -58,16 +58,6 @@ router.post('/logout', withAuth, async (req, res) => {
     }
 });
 
-router.get('/dashboard', withAuth, async (req, res) => {
-    if (req.session.logged_in) {
-        const userData = await User.findByPk(req.session.user_id);
-        // Serialize the user data
-        const user = userData.get({ plain: true });
-        res.render('dashboard', { username: user.username });
-    } else {
-        res.status(500).json(err);
-    }
-});
 
 
 // Route to get all users
