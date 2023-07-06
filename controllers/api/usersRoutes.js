@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.redirect('/dashboard');
+            res.redirect('/login');
         });
     } catch (err) {
         res.status(400).json(err);
@@ -37,11 +37,10 @@ router.post('/login', async (req, res) => {
         req.session.save(err => {
             if (err) {
                 return res.status(500).json(err);
-            } else {
+            }
             // Redirect the user to the dashboard page
             res.redirect('/dashboard');
-        }});
-    
+        });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -58,6 +57,16 @@ router.post('/logout', withAuth, async (req, res) => {
     }
 });
 
+router.get('/dashboard', withAuth, async (req, res) => {
+    try {
+        const userData = await User.findByPk(req.session.user_id);
+        // Serialize the user data
+        const user = userData.get({ plain: true });
+        res.render('dashboard', { username: user.username });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 
 // Route to get all users
