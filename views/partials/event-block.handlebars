@@ -1,4 +1,4 @@
-<!-- event-block.handlebars -->
+<!-- event-block.handlebars 
 
 <div class="event-block">
   <h2>{{ title }}</h2>
@@ -8,4 +8,28 @@
   {{#if description}}
     <p><strong>Description:</strong> {{ description }}</p>
   {{/if}}
+</div>-->
+<div class="tile is-ancestor">
+  <div class="tile is-4 is-vertical is-parent">
+    <div class="tile is-child box">
+      <p class="title">Zipcode</p>
+      <p>Below please put in you zipcode and how far youre willing to travel{{ location }}.</p>
+      <input class="input is-rounded" type="text" placeholder="Rounded input">
+    </div>
+    <div class="tile is-child box">
+      <p class="title">Type of Events</p>
+      <p>Below please select which type of event you are looking for.</p>
+      <input class="input is-rounded" type="text" placeholder="Rounded input">
+      <p>Dates {{ date }}</p>
+    </div>
+  </div>
+  <div class="tile is-parent">
+    <div class="tile is-child box">
+      <p class="title">{{ title }}</p>
+      <p></p>
+        {{#if description}}
+        <p><strong>Description:</strong> {{ description }}</p>
+        {{/if}}   
+    </div>
+  </div>
 </div>
