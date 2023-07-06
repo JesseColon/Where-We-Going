@@ -15,7 +15,7 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/dashboard');
+      // document.location.replace('/dashboard');
     } else {
       alert('Failed to log in');
     }
@@ -47,6 +47,7 @@ const signupFormHandler = async (event) => {
 const loginForm = document.querySelector('.login-form');
 if (loginForm) {
   loginForm.addEventListener('submit', loginFormHandler);
+  res.redirect('/dashboard');
 }
 
 // Check if the signup form exists before adding the event listener
