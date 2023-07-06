@@ -68,10 +68,10 @@ router.get('/users', (req, res) => {
 });
 
  // Route to create a new user
-//  router.post('/users', (req, res) => {
-//      db.User.create(req.body)
-//          .then(newUser => res.json(newUser))
-//          .catch(err => res.status(500).json(err));
-//  });
+ router.post('/users', (req, res) => {
+     db.User.create(req.body)
+         .then(newUser => res.json(newUser))
+         .catch(err => res.status(500).json(err));
+ });
 
 module.exports = router;
