@@ -34,13 +34,9 @@ router.post('/login', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            req.session.save(err => {
-                if (err) {
-                    return res.status(500).json(err);
-                }
-                // Redirect the user to the dashboard page
-                res.redirect('/dashboard');
-            });
+            // Redirect the user to the dashboard page
+            res.redirect('/dashboard');
+
             // res.json({ user: userData, message: 'log in successful!' });
             // Redirect the user to the dashboard page
 
@@ -62,12 +58,12 @@ router.post('/logout', withAuth, async (req, res) => {
 });
 
 router.get('/dashboard', withAuth, async (req, res) => {
-    try {
+    if (req.session.logged_in) {
         const userData = await User.findByPk(req.session.user_id);
         // Serialize the user data
         const user = userData.get({ plain: true });
         res.render('dashboard', { username: user.username });
-    } catch (err) {
+    } else {
         res.status(500).json(err);
     }
 });

@@ -47,6 +47,7 @@ const signupFormHandler = async (event) => {
 const loginForm = document.querySelector('.login-form');
 if (loginForm) {
   loginForm.addEventListener('submit', loginFormHandler);
+  res.redirect('/dashboard');
 }
 
 // Check if the signup form exists before adding the event listener
