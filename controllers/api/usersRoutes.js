@@ -32,19 +32,14 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
-            req.session.save(err => {
-                if (err) {
-                    return res.status(500).json(err);
-                }
-                // Redirect the user to the dashboard page
-                res.redirect('/dashboard');
-            });
-             res.json({ user: userData, message: 'log in successful!' });
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+        req.session.save(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
             // Redirect the user to the dashboard page
-
+            res.redirect('/dashboard');
         });
     } catch (err) {
         res.status(400).json(err);
