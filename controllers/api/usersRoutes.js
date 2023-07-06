@@ -11,10 +11,11 @@ router.post('/', async (req, res) => {
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
-            res.json(userData);
+            res.redirect('/login');
         });
     } catch (err) {
         res.status(400).json(err);
+        res.redirect('/signup');
     }
 });
 
@@ -31,15 +32,14 @@ router.post('/login', async (req, res) => {
             res.status(400).json({ message: 'Incorrect email or password, please try again' });
             return;
         }
-        req.session.save(() => {
-            req.session.user_id = userData.id;
-            req.session.logged_in = true;
+        req.session.user_id = userData.id;
+        req.session.logged_in = true;
+        req.session.save(err => {
+            if (err) {
+                return res.status(500).json(err);
+            }
             // Redirect the user to the dashboard page
             res.redirect('/dashboard');
-
-            // res.json({ user: userData, message: 'log in successful!' });
-            // Redirect the user to the dashboard page
-
         });
     } catch (err) {
         res.status(400).json(err);
@@ -76,11 +76,11 @@ router.get('/users', (req, res) => {
         .catch(err => res.status(500).json(err));
 });
 
-// // Route to create a new user
-// router.post('/users', (req, res) => {
-//     db.User.create(req.body)
-//         .then(newUser => res.json(newUser))
-//         .catch(err => res.status(500).json(err));
-// });
+ // Route to create a new user
+ router.post('/users', (req, res) => {
+     db.User.create(req.body)
+         .then(newUser => res.json(newUser))
+         .catch(err => res.status(500).json(err));
+ });
 
 module.exports = router;

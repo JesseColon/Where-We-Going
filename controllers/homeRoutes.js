@@ -18,7 +18,7 @@ router.get('/signup', (req, res) => {
 // Route for user's dashboard
 router.get('/dashboard', (req, res) => {
     if (!req.session.user) {
-        return res.redirect('/login');
+        return res.redirect('/dashboard');
     }
 
     res.render('dashboard', {
