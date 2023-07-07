@@ -32,6 +32,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
     }
 });
 
+router.get('/eventSearch', (req, res) => {
+    res.render('eventSearch');
+});
+
+
 // Route for 404 
 router.get('*', (req, res) => {
     res.status(404).send('404 Page Not Found');
