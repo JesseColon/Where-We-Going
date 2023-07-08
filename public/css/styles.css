@@ -1,2 +1,6 @@
 
-  
+body {
+    background-image: url(../images/baseball_stadium.png);
+    /* background-repeat: no-repeat; */
+    /* background-position: right top; */
+  }
