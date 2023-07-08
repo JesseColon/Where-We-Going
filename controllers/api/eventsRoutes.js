@@ -17,7 +17,7 @@ router.get('/events/:id', (req, res) => {
 });
 
 // Route to create a new event
-router.post('/events', async (req, res) => {
+router.post('/new', async (req, res) => {
     try {
         const newEvent = await db.Event.create(req.body);
         // Associate the event with the user by setting the appropriate foreign key
