@@ -1,8 +1,11 @@
-<div class="dashboard-container">
-  <div class="welcome-message">
-    <h2>Welcome {{username}},</h2>
-    <p>Hope you enjoy your time and find the event you were looking for!</p>
-     <a href="/eventSearch" class="button is-link">Search for Events</a>
+  <div class="is-ancestor level">
+    <div class="dashboard-container is-parent level-item">
+      <div class="welcome-message is-child">
+        <h2>Welcome {{username}},</h2>
+        <p>Hope you enjoy your time and find the event you were looking for!</p>
+         <a href="/eventSearch" class="button is-link is-outlined">Search for Events</a>
+         <a href="/newEvent" class="button is-link is-outlined">Add a New Event</a>
+      </div>
+    </div>
+    
   </div>
-  
-</div>

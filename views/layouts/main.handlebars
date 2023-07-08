@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Local Event Finder</title>
+    <title>Where We Going</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <link rel="stylesheet" href="/public/css/style.css">
     <link rel="stylesheet" href="/css/jass.css">
@@ -12,29 +12,35 @@
 
 <body>
     <header>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" id="header-title" href="/">
-                    <span class="title is-4">Local Event Finder</span>
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
+        <section class="hero">
+            <div class="hero-body">
+                <nav class="navbar" role="navigation" aria-label="main navigation">
+                    <div class="navbar-brand">
+                        <a class="navbar-item" id="header-title" href="/">
+                            <span class="title is-2">Where We Going</span>
+                        </a>
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <div id="navMenu" class="navbar-menu">
+                        <div class="navbar-end">
+                            {{#if logged_in}}
+                                <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
+                                <a class="navbar-item" id="navbar-links" href="/logout">Logout</a>
+                                <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
+                            {{else}}
+                                <a class="navbar-item" id="navbar-links" href="/login">Login</a>
+                                <a class="navbar-item" id="navbar-links" href="/signup">Sign Up</a>
+                                <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </nav>
             </div>
-            <div id="navMenu" class="navbar-menu">
-                <div class="navbar-end">
-                    {{#if logged_in}}
-                        <a class="navbar-item" id="navbar-links" href="/dashboard">Dashboard</a>
-                        <a class="navbar-item" id="navbar-links" href="/logout">Logout</a>
-                    {{else}}
-                        <a class="navbar-item" id="navbar-links" href="/login">Login</a>
-                        <a class="navbar-item" id="navbar-links" href="/signup">Sign Up</a>
-                    {{/if}}
-                </div>
-            </div>
-        </nav>
+        </section>
     </header>
     <main>
         {{{ body }}}
