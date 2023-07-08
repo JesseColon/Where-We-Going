@@ -20,11 +20,10 @@ router.get('/events/:id', (req, res) => {
 router.post('/events', async (req, res) => {
     try {
         const newEvent = await db.Event.create(req.body);
-        req.session.save(() => {
-            req.session.user_id = newEvent.id;
-            req.session.logged_in = true;
-            res.json(newEvent);
-        });
+        // Associate the event with the user by setting the appropriate foreign key
+        newEvent.user_id = req.session.user_id;
+        await newEvent.save();
+        res.json(newEvent);
     } catch (err) {
         res.status(500).json(err);
     }
