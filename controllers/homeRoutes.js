@@ -36,6 +36,9 @@ router.get('/eventSearch', (req, res) => {
     res.render('eventSearch');
 });
 
+router.get('/newEvent', (req, res) => {
+    res.render('newEvent');
+});
 
 // Route for 404 
 router.get('*', (req, res) => {
