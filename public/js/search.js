@@ -3,6 +3,8 @@ const searchInput = document.getElementById("searchInput");
 const searchCategory = document.getElementById("searchCategory");
 const searchZip = document.getElementById("searchZip");
 const resultsSection = document.getElementById("resultsSection");
+require('dotenv').config();
+
 
 const APIKEY = process.env.API_KEY; 
 

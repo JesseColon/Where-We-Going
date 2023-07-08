@@ -33,7 +33,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 });
 
 router.get('/eventSearch', (req, res) => {
-    res.render('eventSearch');
+    res.render('eventSearch', { apiKey: process.env.API_KEY });
 });
 
 
