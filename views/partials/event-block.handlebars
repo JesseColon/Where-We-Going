@@ -1,35 +1,62 @@
-<!-- event-block.handlebars 
-
-<div class="event-block">
-  <h2>{{ title }}</h2>
-  <p><strong>Location:</strong> {{ location }}</p>
-  <p><strong>Date:</strong> {{ date }}</p>
-  <p><strong>Attendees:</strong> {{ attendees }}</p>
-  {{#if description}}
-    <p><strong>Description:</strong> {{ description }}</p>
-  {{/if}}
-</div>-->
-<div class="tile is-ancestor">
-  <div class="tile is-4 is-vertical is-parent">
-    <div class="tile is-child box">
-      <p class="title">Zipcode</p>
-      <p>Below please put in you zipcode and how far youre willing to travel{{ location }}.</p>
-      <input class="input is-rounded" type="text" placeholder="Rounded input">
-    </div>
-    <div class="tile is-child box">
-      <p class="title">Type of Events</p>
-      <p>Below please select which type of event you are looking for.</p>
-      <input class="input is-rounded" type="text" placeholder="Rounded input">
-      <p>Dates {{ date }}</p>
-    </div>
-  </div>
-  <div class="tile is-parent">
-    <div class="tile is-child box">
-      <p class="title">{{ title }}</p>
-      <p></p>
-        {{#if description}}
-        <p><strong>Description:</strong> {{ description }}</p>
-        {{/if}}   
-    </div>
-  </div>
+<div class="container">
+    <section class="section">
+        <div class="columns is-centered">
+            <div class="column is-half">
+                <h1 class="title has-text-centered">Search for Local Events</h1>
+                <form id="searchForm">
+                    <div class="field has-addons">
+                        <div class="control is-expanded">
+                            <input class="input" type="text" placeholder="Search events.." id="searchInput">
+                        </div>
+                        <div class="control">
+                            <button class="button is-info" type="button" id="searchButton">Search</button>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="searchCategory">
+                                    <option value="">All Categories</option>
+                                    <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
+                                    <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
+                                    <option value="KZFzniwnSyZfZ7v7na">Arts & Theatre</option>
+                                    <option value="KZFzniwnSyZfZ7v7nn">Family</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="locationType">
+                                    <option value="">Select Location Type</option>
+                                    <option value="postalCode">Postal Code</option>
+                                    <option value="city">City</option>
+                                    <option value="countryCode">Country Code</option>
+                                    <option value="stateCode">State Code</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field" id="locationInputField" style="display: none;">
+                        <div class="control">
+                            <input class="input" type="text" placeholder="Enter Location" id="locationInput">
+                        </div>
+                    </div>
+                    <div class="field" id="stateCodeInputField" style="display: none;">
+                        <div class="control">
+                            <div class="select is-fullwidth">
+                                <select id="stateCodeInput">
+                                    <!-- State options will be appended here -->
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    <section class="section" id="resultsSection">
+        <!-- Results will be appended here -->
+    </section>
 </div>
