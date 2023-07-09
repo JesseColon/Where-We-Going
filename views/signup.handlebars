@@ -1,6 +1,7 @@
-<div class="is-ancestor level">
-  <div class="is-parent level-item">
-    <div class="signup-container is-child">
+<section class="section" id="newEventBG">
+  <div class="level-item">
+    <div class="signup-container card">
+      <div class="card-content has-background-light">
       <h2>Sign Up</h2>
       <form action="/api/users" method="POST">
         <div class="form-group">
@@ -22,6 +23,7 @@
       {{#if errorMessage}}
         <p class="error-message">{{errorMessage}}</p>
       {{/if}}
+      </div>
     </div>
   </div>
-</div>
+</section>
