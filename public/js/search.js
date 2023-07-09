@@ -5,8 +5,11 @@ const resultsSection = document.getElementById("resultsSection");
 
 const locationType = document.getElementById("locationType");
 const locationInputField = document.getElementById("locationInputField");
+const locationInput = document.getElementById("locationInput");
 const stateCodeInputField = document.getElementById("stateCodeInputField");
 const stateCodeInput = document.getElementById("stateCodeInput");
+const countryCodeInputField = document.getElementById("countryCodeInputField");
+const countryCodeInput = document.getElementById("countryCodeInput");
 
 if (stateCodeInput) {
     fetch('../states.json')
@@ -20,6 +23,18 @@ if (stateCodeInput) {
             }
         });
 }
+if (countryCodeInput) {
+    fetch('../countries.json')
+        .then(response => response.json())
+        .then(countries => {
+            for (const code in countries) {
+                const option = document.createElement('option');
+                option.value = code;
+                option.text = countries[code];
+                countryCodeInput.appendChild(option);
+            }
+        });
+}
 
 if (locationType) {
     locationType.addEventListener("change", () => {
@@ -27,36 +42,53 @@ if (locationType) {
             if (locationType.value === "stateCode") {
                 stateCodeInputField.style.display = "block";
                 locationInputField.style.display = "none";
+                countryCodeInputField.style.display = "none";
+            } else if (locationType.value === "countryCode") {
+                countryCodeInputField.style.display = "block";
+                locationInputField.style.display = "none";
+                stateCodeInputField.style.display = "none";
             } else {
                 stateCodeInputField.style.display = "none";
+                countryCodeInputField.style.display = "none";
                 locationInputField.style.display = "block";
             }
         } else {
             locationInputField.style.display = "none";
             stateCodeInputField.style.display = "none";
+            countryCodeInputField.style.display = "none";
         }
     });
 }
+
 
 if (searchButton) {
     searchButton.addEventListener("click", async () => {
         const query = searchInput.value;
         const category = searchCategory.value;
+        const radius = radiusInput.value;
 
         let locationValue;
         if (locationType.value === "stateCode") {
             locationValue = stateCodeInput.value;
+        } else if (locationType.value === "countryCode") {
+            locationValue = countryCodeInput.value;
         } else {
-            locationValue = locationInputField.value;
+            locationValue = locationInput.value;
         }
+
 
         let locationParam = '';
         if (locationType.value) {
             locationParam = `${locationType.value}=${locationValue}`;
         }
 
+        let radiusParam = '';
+        if (radius && (locationType.value === "postalCode" || locationType.value === "city")) {
+            radiusParam = `&radius=${radius}`;
+        }
+
         try {
-            const response = await fetch(`/api/search?keyword=${query}&segmentName=${category}&${locationParam}`);
+           const response = await fetch(`/api/search?keyword=${query}&segmentName=${category}&${locationParam}${radiusParam}`);
             const data = await response.json();
 
             // Clear previous results
