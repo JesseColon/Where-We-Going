@@ -7,27 +7,28 @@ const APIKEY = process.env.API_KEY;
 router.get('/', async (req, res) => {
     const { keyword, segmentName, postalCode, city, countryCode, stateCode, radius } = req.query;
 
+    // let radiusParam = '';
     let locationParam;
-    let radiusParam = '';
     if (postalCode) {
         locationParam = `postalCode=${postalCode}`;
         if (radius) {
-            radiusParam = `&radius=${radius}&unit=miles`;
+            locationParam += `&radius=${radius}&unit=miles`;
         }
     } else if (city) {
         locationParam = `city=${city}`;
         if (radius) {
-            radiusParam = `&radius=${radius}&unit=miles`;
+            locationParam += `&radius=${radius}&unit=miles`;
         }
     } else if (countryCode) {
         locationParam = `countryCode=${countryCode}`;
     } else if (stateCode) {
         locationParam = `stateCode=${stateCode}`;
     }
+    
 
     
 
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationId=${segmentName}&${locationParam}&apikey=${APIKEY}`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationId=${segmentName}&${locationParam}${radiusParam}&apikey=${APIKEY}`;
 
     try {
         const response = await fetch(url);

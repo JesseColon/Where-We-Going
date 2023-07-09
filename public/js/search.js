@@ -42,20 +42,20 @@ if (locationType) {
             if (locationType.value === "stateCode") {
                 stateCodeInputField.style.display = "block";
                 locationInputField.style.display = "none";
-                countryCodeInputField.style.display = "none";
-            } else if (locationType.value === "countryCode") {
-                countryCodeInputField.style.display = "block";
-                locationInputField.style.display = "none";
-                stateCodeInputField.style.display = "none";
+                radiusInputField.style.display = "none";
             } else {
                 stateCodeInputField.style.display = "none";
-                countryCodeInputField.style.display = "none";
                 locationInputField.style.display = "block";
+                if (locationType.value === "postalCode" || locationType.value === "city") {
+                    radiusInputField.style.display = "block";
+                } else {
+                    radiusInputField.style.display = "none";
+                }
             }
         } else {
             locationInputField.style.display = "none";
             stateCodeInputField.style.display = "none";
-            countryCodeInputField.style.display = "none";
+            radiusInputField.style.display = "none";
         }
     });
 }
@@ -82,13 +82,13 @@ if (searchButton) {
             locationParam = `${locationType.value}=${locationValue}`;
         }
 
-        let radiusParam = '';
-        if (radius && (locationType.value === "postalCode" || locationType.value === "city")) {
-            radiusParam = `&radius=${radius}`;
-        }
+        // let radiusParam = '';
+        // if (radius && (locationType.value === "postalCode" || locationType.value === "city")) {
+        //     radiusParam = `&radius=${radius}`;
+        // }
 
         try {
-           const response = await fetch(`/api/search?keyword=${query}&segmentName=${category}&${locationParam}${radiusParam}`);
+           const response = await fetch(`/api/search?keyword=${query}&segmentName=${category}&${locationParam}`);
             const data = await response.json();
 
             // Clear previous results
