@@ -1,11 +1,23 @@
-  <div class="is-ancestor level">
-    <div class="dashboard-container is-parent level-item">
-      <div class="welcome-message is-child">
-        <h2>Welcome {{username}},</h2>
-        <p>Hope you enjoy your time and find the event you were looking for!</p>
-         <a href="/eventSearch" class="button is-link is-outlined">Search for Events</a>
-         <a href="/newEvent" class="button is-link is-outlined">Add a New Event</a>
+  <section class="section" id="newEventBG">  
+    <div class="container is-max-desktop ">
+      <div class="card has-background-light">
+        <div class="dashboard-container card-content has-text-centered">
+       
+            <figure class="container is-max-desktop image is-128x128">
+              <img src="../images/blank-profile-picture-973460_960_720.webp" alt="profile picture">
+            </figure>
+        
+          <div class="welcome-message media ">
+            <div class="media-content">
+              <p class="title is-4">Welcome {{username}},</p>
+              <p class="subtitle is-6">Hope you enjoy your time and find the event you were looking for!</p>
+            </div>
+          </div>
+          <div>
+             <a href="/eventSearch" class="button is-link is-outlined">Search for Events</a>
+             <a href="/newEvent" class="button is-link is-outlined">Add a New Event</a>
+          </div>
+        </div>
+        </div>
       </div>
-    </div>
-    
-  </div>
+    </section>
