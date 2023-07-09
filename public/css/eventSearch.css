@@ -1,0 +1,15 @@
+#newEventBG {
+    font-family: 'Playfair Display', serif;
+    background: linear-gradient(to bottom, #000000, #3e3e3e, #7c7c7c, #b4b4b4);
+    justify-self: center;
+    position: relative;
+    color: white;
+    margin: 0%;
+    width: 100vw;
+    min-height: 100vh;
+    
+}
+
+.card-mw{
+    min-height: 30vh;
+}
