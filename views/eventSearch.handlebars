@@ -1,6 +1,6 @@
 <section class="section" id="newEventBG">
     <div class="container">
-        <h1 class="title has-text-centered" id="srhTitle">Search for Local Events</h1>
+        <h1 class="title has-text-centered" id="srhTitle">Search for Events! <strong>Where We Going?</strong></h1>
         <div class="columns is-centered">
             <div class="column is-8">
                 <div class="card card-mw">
@@ -18,7 +18,7 @@
                                 <div class="control">
                                     <div class="select is-fullwidth">
                                         <select id="searchCategory">
-                                            <option value="">All Categories</option>
+                                            <option value="">Categories</option>
                                             <option value="KZFzniwnSyZfZ7v7nJ">Music</option>
                                             <option value="KZFzniwnSyZfZ7v7nE">Sports</option>
                                             <option value="KZFzniwnSyZfZ7v7na">Arts & Theatre</option>
@@ -31,11 +31,11 @@
                                 <div class="control">
                                     <div class="select is-fullwidth">
                                         <select id="locationType">
-                                            <option value="">Select Location Type</option>
-                                            <option value="postalCode">Zipcode</option>
+                                            <option value="">Search by..</option>
+                                            <option value="countryCode">Country</option>
+                                            <option value="stateCode">States</option>
                                             <option value="city">City</option>
-                                            <option value="countryCode">Country Code</option>
-                                            <option value="stateCode">State Code</option>
+                                            <option value="postalCode">Zipcode</option>
                                         </select>
                                     </div>
                                 </div>
@@ -52,6 +52,20 @@
                                             <!-- State options will be appended here -->
                                         </select>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="field" id="countryCodeInputField" style="display: none;">
+                                <div class="control">
+                                    <div class="select is-fullwidth">
+                                        <select id="countryCodeInput">
+                                            <!-- Country options will be appended here -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field" id="radiusInputField" style="display: none;">
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Enter Radius in Miles" id="radiusInput">
                                 </div>
                             </div>
                         </form>
