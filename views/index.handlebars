@@ -9,7 +9,22 @@
           </div>
         </div>
       </div>
-      <div class="contatiner is-max-desktop">
+      <div class="contatiner is-max-desktop has-text-centered">
+   <h1>Upcoming Events</h1>
+  <ul>
+    {{#each events}}
+      <li>
+        <h3>{{title}}</h3>
+        <p>Date: {{date}}</p>
+        <p>Location: {{location}}</p>
+        <p>Attendees: {{attendees}}</p>
+        <p>Description: {{description}}</p>
+      </li>
+      {{else}}
+        <li>No upcoming events</li>
+    {{/each}}
+  </ul>
       </div>
     </div>
-  </section>  
+</section>
+ 

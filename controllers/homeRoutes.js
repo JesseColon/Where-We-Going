@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const withAuth = require('../utils/auth');
-const { User } = require('../models');
+const { Event, User } = require('../models');
 
 // Route for homepage
 router.get('/', (req, res) => {
@@ -45,4 +45,20 @@ router.get('*', (req, res) => {
     res.status(404).send('404 Page Not Found');
 });
 
+router.get('/', async (req, res) => {
+    try {
+        // Fetch the events from the database
+        const eventList = await Event.findAll();
+
+        // Serialize the event data for the template
+        const events = eventList.map(event => event.get({ plain: true }));
+
+        res.render('index', { title: 'Home', events });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
+

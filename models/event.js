@@ -1,5 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../Config/connection');
+const User = require('./user');
+
 
 class Event extends Model {}
 
@@ -10,6 +12,18 @@ Event.init(
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'user',
+        key: 'id'
+      }
+    },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     title: {
       type: DataTypes.STRING,
@@ -27,6 +41,10 @@ Event.init(
       type: DataTypes.DATE,
       allowNull: false,
     },
+    time: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
     description: {
         type: DataTypes.TEXT,
         allowNull: true,
@@ -42,3 +60,4 @@ Event.init(
 );
 
 module.exports = Event;
+

@@ -1,3 +1,5 @@
+
+
 const router = require('express').Router();
 const { Event } = require('../../models');
 const db = require('../../models');
@@ -16,17 +18,26 @@ router.get('/events/:id', (req, res) => {
         .catch(err => res.status(500).json(err));
 });
 
-// Route to create a new event
 router.post('/new', async (req, res) => {
     try {
-        const newEvent = await db.Event.create(req.body);
-        // Associate the event with the user by setting the appropriate foreign key
-        newEvent.user_id = req.session.user_id;
-        await newEvent.save();
+        // Check if a user is logged in
+        if(!req.session || !req.session.user_id) {
+            return res.status(400).json({ error: 'No user session found' });
+        }
+        
+        // Create new event with user_id from the session
+        const newEvent = await db.Event.create({
+            ...req.body,
+            user_id: req.session.user_id
+        });
+        
         res.json(newEvent);
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json({ error: err.message });
     }
 });
 
+
+
 module.exports = router;
+
