@@ -10,6 +10,8 @@ const stateCodeInputField = document.getElementById("stateCodeInputField");
 const stateCodeInput = document.getElementById("stateCodeInput");
 const countryCodeInputField = document.getElementById("countryCodeInputField");
 const countryCodeInput = document.getElementById("countryCodeInput");
+const radiusInputField = document.getElementById("radiusInputField");
+const radiusInput = document.getElementById("radiusInput");
 
 if (stateCodeInput) {
     fetch('../states.json')
@@ -65,7 +67,6 @@ if (searchButton) {
     searchButton.addEventListener("click", async () => {
         const query = searchInput.value;
         const category = searchCategory.value;
-        const radius = radiusInput.value;
 
         let locationValue;
         if (locationType.value === "stateCode") {
@@ -76,16 +77,15 @@ if (searchButton) {
             locationValue = locationInput.value;
         }
 
-
         let locationParam = '';
         if (locationType.value) {
             locationParam = `${locationType.value}=${locationValue}`;
+            if (locationType.value === "postalCode" || locationType.value === "city") {
+                const radiusInput = document.getElementById("radiusInput");
+                const radius = radiusInput.value;
+                locationParam += `&radius=${radius}&unit=miles`;  // Use radius here
+            }
         }
-
-        // let radiusParam = '';
-        // if (radius && (locationType.value === "postalCode" || locationType.value === "city")) {
-        //     radiusParam = `&radius=${radius}`;
-        // }
 
         try {
            const response = await fetch(`/api/search?keyword=${query}&segmentName=${category}&${locationParam}`);
