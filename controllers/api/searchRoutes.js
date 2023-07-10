@@ -28,7 +28,7 @@ router.get('/', async (req, res) => {
 
     
 
-    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationId=${segmentName}&${locationParam}${radiusParam}&apikey=${APIKEY}`;
+    const url = `https://app.ticketmaster.com/discovery/v2/events.json?keyword=${keyword}&classificationId=${segmentName}&${locationParam}&apikey=${APIKEY}`;
 
     try {
         const response = await fetch(url);
